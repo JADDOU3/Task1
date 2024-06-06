@@ -5,11 +5,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class DateCell implements Cell<DateCell , Date>{
+public class DateCell implements Cell<DateCell , String>{
     private Date date;
-
+    private SimpleDateFormat format;
     public DateCell(String a){
-        SimpleDateFormat format = new SimpleDateFormat("\\d{1,2}/\\d{1,2}/\\d{4}");
+        format = new SimpleDateFormat("d/M/yyyy");
         try {
             date = format.parse(a);
         } catch (ParseException e) {
@@ -19,19 +19,26 @@ public class DateCell implements Cell<DateCell , Date>{
 
     @Override
     public int compare(DateCell cell1) {
-        int comparesion = date.compareTo(cell1.getValue());
-        if(comparesion > 0){
-            return 1;
-        }
-        else if(comparesion < 0){
-            return -1;
+        try {
+            int comparesion = date.compareTo(format.parse(cell1.getValue()));
+            if(comparesion > 0){
+                return 1;
+            }
+            else if(comparesion < 0){
+                return -1;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
         return 0;
     }
 
-    public Date getValue(){
-        return date;
+    public String getValue(){
+        return format.format(date);
     }
+
+
+
 
 
 }

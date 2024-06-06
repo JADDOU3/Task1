@@ -1,4 +1,4 @@
-package org.example.StatePattern;
+package org.example.StateController;
 
 import org.example.CSVFileRW;
 

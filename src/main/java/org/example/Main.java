@@ -1,5 +1,5 @@
 package org.example;
-import org.example.StatePattern.*;
+import org.example.StateController.*;
 
 public class Main {
     public static void main(String[] args) {

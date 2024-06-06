@@ -1,6 +1,4 @@
-package org.example.StatePattern;
-
-import org.example.CSVFileRW;
+package org.example.StateController;
 
 public class ExitState implements State{
     private Context context;
@@ -11,6 +9,5 @@ public class ExitState implements State{
 
     @Override
     public void handleInput() {
-       System.out.println("bye <3");
     }
 }

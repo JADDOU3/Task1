@@ -56,7 +56,7 @@ public class CSVFileRW {
             BufferedReader reader = new BufferedReader(file);
             String line;
             while ((line = reader.readLine()) != null) {
-                String[] splits = line.split(",");
+                String[] splits = line.split(",(?!.*[\"])");
                 Row row = new Row();
                 for (String val : splits) {
                     Cell cell;
@@ -73,7 +73,7 @@ public class CSVFileRW {
                         cell = new StringCell(val);
                     }
                     row.cellList.add(cell);
-                }
+                       }
                 list.add(row);
             }
             reader.close();
